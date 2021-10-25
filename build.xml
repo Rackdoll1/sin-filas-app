@@ -1,0 +1,27 @@
+<project name="DemoApp" default="run" basedir=".">
+
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="docs" location="docs"/>
+
+  <target name="compile">
+    <mkdir dir="${build}"/>
+    <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
+  </target>
+  
+  <target name="run" depends="compile">
+    <java classname="${ant.project.name}" classpath="${build}"/>
+  </target>
+  
+  <target name="docs">
+    <mkdir dir="${docs}"/>
+    <javadoc sourcepath="${src}" destdir="${docs}" author="true" version="true" windowtitle="${ant.project.name}"/>
+  </target>
+  
+  <target name="clean">
+    <delete dir="${build}"/>
+    <delete dir="${docs}"/>
+  </target>
+  
+</project>
+    
